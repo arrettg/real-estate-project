@@ -35,6 +35,8 @@ app.post("/auth/login/agent", authCtrl.agentLogin);
 app.get("/auth/logout", authCtrl.logout);
 
 //property endpoints
-app.post("/api/property/agent", auth.agentsOnly, propertyCtrl.addNewListing);
+app.post("/api/properties", auth.agentsOnly, propertyCtrl.addNewListing);
+app.put("/api/properties/:id", auth.agentsOnly, propertyCtrl.editListing);
+app.delete("/api/properties/:id", auth.agentsOnly, propertyCtrl.deleteListing);
 
 app.listen(PORT, () => console.log(`LISTEN on ${PORT}`));

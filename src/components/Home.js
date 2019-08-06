@@ -9,7 +9,7 @@ export default class Home extends Component {
           <button>I am a User</button>
         </Link>
         <Link to="/login/agent">
-          <button> I am an agent</button>
+          <button> I am an Agent</button>
         </Link>
       </>
     );
