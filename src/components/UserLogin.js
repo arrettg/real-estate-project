@@ -14,6 +14,7 @@ class UserLogin extends Component {
     if (this.props.error === "login") {
       alert("incorrect username or password");
     }
+
     return (
       <div>
         {this.props.id ? <Redirect to="/main/user" /> : null}
@@ -29,7 +30,7 @@ class UserLogin extends Component {
           placeholder="Password"
         />
         <button onClick={this.handleLogin}>Submit</button>
-        <p1>or</p1>
+        <p>or</p>
         <Link to="/register/user">
           <h1>Register</h1>
         </Link>
@@ -41,7 +42,9 @@ class UserLogin extends Component {
 let mapStatetoProps = reduxState => {
   return {
     username: reduxState.userAuth.username,
-    password: reduxState.userAuth.password
+    password: reduxState.userAuth.password,
+    id: reduxState.userAuth.id,
+    error: reduxState.userAuth.error
   };
 };
 

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import "../styles/header.scss";
 
 export default class Header extends Component {
   render() {
     return (
-      <div>
+      <header>
         <h1>Agent Finder</h1>
-      </div>
+      </header>
     );
   }
 }

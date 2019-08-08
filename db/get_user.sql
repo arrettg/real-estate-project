@@ -1,2 +1,2 @@
 SELECt * FROM users
-WHERE user_name = $1
+WHERE username = $1

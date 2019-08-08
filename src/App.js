@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./components/Header";
-import { HashRouter, Link } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 import routes from "./routes";

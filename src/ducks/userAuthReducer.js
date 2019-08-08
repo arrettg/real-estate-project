@@ -3,7 +3,7 @@ import axios from "axios";
 const initialState = {
   username: "",
   password: "",
-  emial: "",
+  email: "",
   id: null,
   error: ""
 };
@@ -41,11 +41,11 @@ export default function(state = initialState, action) {
     case UPDATE_AUTH:
       return { ...state, [payload.name]: payload.value, error: "" };
     case `${LOGIN}_FULFILLED`:
-      return { ...state, password: "", id: payload.data.user_id, error: "" };
+      return { ...state, password: "", id: payload.data.id, error: "" };
     case `${LOGIN}_RJECTED`:
       return { ...state, password: "", username: "", error: "Login" };
     case `${REGISTER}_FULFILLED`:
-      return { ...state, password: "", id: payload.data.user_id, error: "" };
+      return { ...state, password: "", id: payload.data.id, error: "" };
     case `${REGISTER}_REJECTED`:
       return { ...state, password: "", username: "", error: "Register" };
     default:

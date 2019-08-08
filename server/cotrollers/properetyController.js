@@ -19,5 +19,10 @@ module.exports = {
     const { id } = req.params;
     const deleteProperty = await req.app.get("db").delete_listing(id);
     return res.sendStatus(200);
+  },
+  getAgentListings: async (req, res) => {
+    const { id } = req.session.agent;
+    const agentProperty = await req.app.get("db").get_property(id);
+    return res.status(200).json(agentProperty);
   }
 };

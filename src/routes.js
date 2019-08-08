@@ -6,6 +6,7 @@ import UserLogin from "./components/UserLogin";
 import UserRegistration from "./components/UserRegistration";
 import AgentRegistration from "./components/AgentRegistration";
 import UserMain from "./components/UserMain";
+import AgentMain from "./components/AgentMain";
 
 export default (
   <Switch>
@@ -14,6 +15,7 @@ export default (
     <Route component={UserLogin} path="/login/user" />
     <Route component={UserRegistration} path="/register/user" />
     <Route component={AgentRegistration} path="/register/agent" />
+    <Route component={AgentMain} path="/main/agent" />
     <Route component={UserMain} path="/main/user" />
   </Switch>
 );

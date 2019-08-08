@@ -1,15 +1,33 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
-export default class AgentLogin extends Component {
+import { login, updateAuth } from "../ducks/agentAuthReducer";
+
+class AgentLogin extends Component {
+  handleChange = e => {
+    this.props.updateAuth(e.target.name, e.target.value);
+  };
+  handleLogin = e => {
+    this.props.login(this.props.email, this.props.password);
+  };
   render() {
+    if (this.props.error === "login") {
+      alert("incorrect username or password");
+    }
+    console.log(this.props);
     return (
       <div>
+        {this.props.id ? <Redirect to="/main/agent" /> : null}
         <h1>Login</h1>
-        <input placeholder="Email" />
-        <input placeholder="Password" />
-        <button>Submit</button>
-        <p1>or</p1>
+        <input onChange={this.handleChange} name="email" placeholder="Email" />
+        <input
+          onChange={this.handleChange}
+          name="password"
+          placeholder="Password"
+        />
+        <button onClick={this.handleLogin}>Login</button>
+        <p>or</p>
         <Link to="/register/agent">
           <h1>Register</h1>
         </Link>
@@ -17,3 +35,17 @@ export default class AgentLogin extends Component {
     );
   }
 }
+
+let mapStatetoProps = reduxState => {
+  return {
+    email: reduxState.agentAuth.email,
+    password: reduxState.agentAuth.password,
+    id: reduxState.agentAuth.id,
+    error: reduxState.agentAuth.error
+  };
+};
+
+export default connect(
+  mapStatetoProps,
+  { updateAuth, login }
+)(AgentLogin);
