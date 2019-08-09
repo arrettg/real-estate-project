@@ -1,0 +1,19 @@
+@import "vars";
+
+form {
+  display: flex;
+  height: 70vh;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+
+  font-family: $myText;
+
+  input {
+    width: 90%;
+    border: 2px solid lightgray;
+    border-radius: 4px;
+    padding: 12px;
+  }
+}

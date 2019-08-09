@@ -1,62 +1,36 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { updateAuth, addProperty } from "../ducks/propertyReducer";
+import { Link } from "react-router-dom";
+import Listings from "./Listings";
+require("dotenv").config();
 
-class AgentMain extends Component {
-  handleChange = e => {
-    this.props.updateAuth(e.target.name, e.target.value);
-  };
-
-  handleAdd = e => {
-    this.props.addProperty(
-      this.props.city,
-      this.props.state,
-      this.props.address,
-      this.props.zipcode,
-      this.props.image,
-      this.props.price
-    );
+export default class AgentMain extends Component {
+  handleZillow = e => {
+    var Zillow = require("node-zillow");
+    var zwsid = process.env.ZWSID;
+    var zillow = new Zillow("X1-ZWz17qio3bjx1n_7galu");
+    var address = "5064 Clover Haven Ct";
+    var city = " Dallas Texas";
+    var aUri = encodeURIComponent(address);
+    var cUri = encodeURIComponent(city);
+    var parameters = {
+      address: aUri,
+      citystatezip: cUri
+    };
+    zillow.get("GetSearchResults", parameters).then(function(results) {
+      console.log(results);
+    });
   };
   render() {
     return (
       <div>
-        <h1>Add a Listing</h1>
-        <input onChange={this.handleChange} name="city" placeholder="City" />
-        <input onChange={this.handleChange} name="state" placeholder="State" />
-        <input
-          onChange={this.handleChange}
-          name="address"
-          placeholder="Address"
-        />
-        <input
-          onChange={this.handleChange}
-          name="zipcode"
-          placeholder="Zipcode"
-        />
-        <input
-          onChange={this.handleChange}
-          name="image"
-          placeholder="Picture"
-        />
-        <input onChange={this.handleChange} name="price" placeholder="Price" />
-        <button onClick={this.handleAdd}>List</button>
+        <Link to="/listingForm">
+          <h1>Add a Listing</h1>
+        </Link>
+        <button onClick={this.handleZillow}>zillow</button>
+
+        <h1>Your Listings</h1>
+        <Listings />
       </div>
     );
   }
 }
-
-let mapStatetoProps = reduxState => {
-  return {
-    city: reduxState.property.city,
-    state: reduxState.property.state,
-    address: reduxState.property.address,
-    zipcode: reduxState.property.zipcode,
-    image: reduxState.property.image,
-    price: reduxState.property.price
-  };
-};
-
-export default connect(
-  mapStatetoProps,
-  { updateAuth, addProperty }
-)(AgentMain);

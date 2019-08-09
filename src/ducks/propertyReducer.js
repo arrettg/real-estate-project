@@ -84,7 +84,7 @@ export default function(state = intialState, action) {
     case `${DELETE_PROPERTY}_FULFILLED`:
       return { ...state, homes: payload };
     case `${GET_PROPERTIES}_FULFILLED`:
-      return { ...state, homes: payload };
+      return { ...state, homes: payload.data };
     default:
       return state;
   }
