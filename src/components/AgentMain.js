@@ -7,7 +7,7 @@ export default class AgentMain extends Component {
   handleZillow = e => {
     var Zillow = require("node-zillow");
     var zwsid = process.env.ZWSID;
-    var zillow = new Zillow("X1-ZWz17qio3bjx1n_7galu");
+    var zillow = new Zillow("");
     var address = "5064 Clover Haven Ct";
     var city = " Dallas Texas";
     var aUri = encodeURIComponent(address);
