@@ -1,2 +1,7 @@
 $mainColor: rgb(51, 204, 51);
 $myText: Verdana, Geneva, Tahoma, sans-serif;
+@mixin displayflex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

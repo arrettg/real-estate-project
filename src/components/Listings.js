@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getProperties, updateProperty } from "../ducks/propertyReducer";
+import {
+  getProperties,
+  updateProperty,
+  deleteProperty
+} from "../ducks/propertyReducer";
 import Listing from "./Listing";
 
 class Listings extends Component {
@@ -21,7 +25,13 @@ class Listings extends Component {
 
   render() {
     let displayListings = this.props.homes.map(property => {
-      return <Listing property={property} key={property.property_id} />;
+      return (
+        <Listing
+          property={property}
+          key={property.property_id}
+          removeProperty={this.props.deleteProperty}
+        />
+      );
     });
     console.log(this.props);
     return (
@@ -41,5 +51,5 @@ let mapStatetoProps = reduxState => {
 
 export default connect(
   mapStatetoProps,
-  { getProperties }
+  { getProperties, updateProperty, deleteProperty }
 )(Listings);

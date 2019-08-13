@@ -3,6 +3,7 @@ import axios from "axios";
 const intialState = {
   city: "",
   state: "",
+  address: "",
   zipcode: null,
   image: "",
   price: "",
@@ -32,10 +33,19 @@ export function deleteProperty(id) {
   };
 }
 
-export function updateProperty(city, state, zipcode, image, price, id) {
+export function updateProperty(
+  city,
+  state,
+  zipcode,
+  address,
+  image,
+  price,
+  id
+) {
   let data = axios.put(`/api/properties/${id}`, {
     city,
     state,
+    address,
     zipcode,
     image,
     price,
@@ -47,10 +57,11 @@ export function updateProperty(city, state, zipcode, image, price, id) {
   };
 }
 
-export function addProperty(city, state, zipcode, image, price) {
+export function addProperty(city, state, address, zipcode, image, price) {
   let data = axios.post("/api/properties", {
     city,
     state,
+    address,
     zipcode,
     image,
     price

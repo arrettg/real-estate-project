@@ -1,0 +1,42 @@
+@import "vars";
+
+main {
+  //   border: 1px solid red;
+  display: flex;
+  //   justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 80vh;
+  font-family: $myText;
+
+  .welcome {
+    font-size: 1.5em;
+  }
+
+  .search-container {
+    display: flex;
+    border: 1px solid blue;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 200px;
+    width: 100%;
+
+    input {
+      width: 50%;
+      border: 2px solid lightgray;
+      border-radius: 4px;
+      padding: 12px;
+    }
+    select {
+      width: 20%;
+      border: 2px solid lightgray;
+      border-radius: 4px;
+      padding: 12px;
+    }
+
+    i {
+      font-size: 2em;
+    }
+  }
+}

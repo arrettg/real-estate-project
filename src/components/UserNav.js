@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "../styles/userNav.scss";
 
 export default class UserNav extends Component {
   constructor() {
@@ -19,8 +20,10 @@ export default class UserNav extends Component {
   render() {
     return (
       <div>
-        <i className="material-icons">menu</i>
-        <ul>
+        <i onClick={this.handleSlide} className="material-icons">
+          menu
+        </i>
+        <ul className={this.state.slide}>
           <li>Sign Out</li>
         </ul>
       </div>
