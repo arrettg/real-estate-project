@@ -30,6 +30,7 @@ class Listings extends Component {
           property={property}
           key={property.property_id}
           removeProperty={this.props.deleteProperty}
+          editProperty={this.props.updateProperty}
         />
       );
     });

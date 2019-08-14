@@ -7,17 +7,12 @@ const propertyCtrl = require("./cotrollers/properetyController");
 const userCtrl = require("./cotrollers/userController");
 const mailerCtrl = require("./cotrollers/mailerController");
 const auth = require("./middleware/authMiddleware");
-const exhbs = require("express-handlebars");
-const nodemailer = require("nodemailer");
 
 const PORT = 4040;
 
-const { SESSION_SECRET, CONNECTION_STRING, ZWSID } = process.env;
+const { SESSION_SECRET, CONNECTION_STRING, ZWSID, USER, PASS } = process.env;
 
 const app = express();
-
-app.engine("handlebars", exhbs());
-app.set("view engine", "handlebars");
 
 app.use(express.json());
 
@@ -42,9 +37,7 @@ app.post("/auth/login/agent", authCtrl.agentLogin);
 app.get("/auth/logout", authCtrl.logout);
 
 //mailer
-// app.get('/',(req, res) =>{
-//   res.json('Hello')
-// })
+
 app.post("/send", mailerCtrl.send);
 
 //user enpoints

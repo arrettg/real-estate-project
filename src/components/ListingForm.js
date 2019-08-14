@@ -36,6 +36,7 @@ class ListingForm extends Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <>
         <form>

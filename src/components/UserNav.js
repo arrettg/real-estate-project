@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../styles/userNav.scss";
+import { connect } from "react-redux";
+import { logout } from "../ducks/userAuthReducer";
 
-export default class UserNav extends Component {
+class UserNav extends Component {
   constructor() {
     super();
     this.state = {
@@ -17,6 +19,9 @@ export default class UserNav extends Component {
       this.setState({ slide: "close" });
     }
   };
+  handleSignout = e => {
+    this.props.logout();
+  };
   render() {
     return (
       <div>
@@ -24,9 +29,29 @@ export default class UserNav extends Component {
           menu
         </i>
         <ul className={this.state.slide}>
-          <li>Sign Out</li>
+          <li onClick={this.handleSignout}>Sign Out</li>
+          <Link to="/main/user">
+            <li>Search</li>
+          </Link>
+          <Link to="/contact">
+            <li>Contact us</li>
+          </Link>
         </ul>
       </div>
     );
   }
 }
+
+let mapStatetoProps = reduxState => {
+  return {
+    username: reduxState.userAuth.username,
+    password: reduxState.userAuth.password,
+    id: reduxState.userAuth.id,
+    error: reduxState.userAuth.error
+  };
+};
+
+export default connect(
+  mapStatetoProps,
+  { logout }
+)(UserNav);

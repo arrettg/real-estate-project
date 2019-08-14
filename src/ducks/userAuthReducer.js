@@ -11,6 +11,7 @@ const initialState = {
 const UPDATE_AUTH = "UPDATE_AUTH";
 const LOGIN = "LOGIN";
 const REGISTER = "REGISTER";
+const LOGOUT = "LOGOUT";
 
 export function updateAuth(name, value) {
   return {
@@ -23,6 +24,13 @@ export function login(username, password) {
   let data = axios.post("/auth/login/user", { username, password });
   return {
     type: LOGIN,
+    payload: data
+  };
+}
+export function logout() {
+  let data = axios.get("/auth/logout");
+  return {
+    type: logout,
     payload: data
   };
 }
@@ -48,6 +56,8 @@ export default function(state = initialState, action) {
       return { ...state, password: "", id: payload.data.id, error: "" };
     case `${REGISTER}_REJECTED`:
       return { ...state, password: "", username: "", error: "Register" };
+    case `${LOGOUT}_FULFILLED`:
+      return { ...state, password: "", username: "", id: null, error: "" };
     default:
       return state;
   }

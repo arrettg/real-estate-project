@@ -36,8 +36,8 @@ export function deleteProperty(id) {
 export function updateProperty(
   city,
   state,
-  zipcode,
   address,
+  zipcode,
   image,
   price,
   id

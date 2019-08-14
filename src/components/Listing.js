@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ListingForm from "./ListingForm";
 
 export default function Listing(props) {
-  const { property, key, removeProperty } = props;
+  const { property, key, removeProperty, editProperty } = props;
   console.log(property);
   return (
     <div>
@@ -15,6 +16,22 @@ export default function Listing(props) {
       <Link to="/listingForm">
         <button>Edit</button>
       </Link>
+
+      <button
+        onClick={() =>
+          editProperty(
+            property.city,
+            property.state,
+            property.address,
+            property.zipcode,
+            property.image,
+            property.price,
+            property.property_id
+          )
+        }
+      >
+        Submit edit
+      </button>
       <button onClick={() => removeProperty(property.property_id)}>
         Delete
       </button>

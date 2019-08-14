@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export default function Agent(props) {
   const { agent } = props;
@@ -12,9 +11,6 @@ export default function Agent(props) {
       <h1>{agent.state}</h1>
       <h1>{agent.phone}</h1>
       <h1>{agent.email}</h1>
-      <Link to="/contact">
-        <button>contact</button>
-      </Link>
     </div>
   );
 }
