@@ -1,7 +1,10 @@
-$mainColor: rgb(51, 204, 51);
+$mainColor: green;
+$secondaryColor: limegreen;
 $myText: Verdana, Geneva, Tahoma, sans-serif;
-@mixin displayflex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@mixin input {
+  width: 90%;
+  border: 2px solid lightgray;
+  border-radius: 4px;
+  padding: 12px;
+  margin: right 5px;
 }

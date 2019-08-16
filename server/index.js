@@ -1,11 +1,15 @@
+const path = require("path");
 require("dotenv").config();
+
 const express = require("express");
 const session = require("express-session");
+
 const massive = require("massive");
 const authCtrl = require("./cotrollers/authController");
 const propertyCtrl = require("./cotrollers/properetyController");
 const userCtrl = require("./cotrollers/userController");
 const mailerCtrl = require("./cotrollers/mailerController");
+// const messageController = require("./cotrollers/messageController");
 const auth = require("./middleware/authMiddleware");
 
 const PORT = 4040;
@@ -14,6 +18,7 @@ const { SESSION_SECRET, CONNECTION_STRING, ZWSID, USER, PASS } = process.env;
 
 const app = express();
 
+app.use(express.static(`${__dirname}/../build`));
 app.use(express.json());
 
 massive(CONNECTION_STRING).then(db => {
@@ -28,6 +33,9 @@ app.use(
     secret: SESSION_SECRET
   })
 );
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
+});
 
 //auth endpoints
 app.post("/auth/register/user", authCtrl.registerUser);

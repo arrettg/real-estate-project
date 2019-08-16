@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import "../styles/login.scss";
 
 import { login, updateAuth } from "../ducks/agentAuthReducer";
 
@@ -17,7 +18,7 @@ class AgentLogin extends Component {
     }
     console.log(this.props);
     return (
-      <div>
+      <section>
         {this.props.id ? <Redirect to="/main/agent" /> : null}
         <h1>Login</h1>
         <input onChange={this.handleChange} name="email" placeholder="Email" />
@@ -29,9 +30,9 @@ class AgentLogin extends Component {
         <button onClick={this.handleLogin}>Login</button>
         <p>or</p>
         <Link to="/register/agent">
-          <h1>Register</h1>
+          <button className="register-wrapper">Register</button>
         </Link>
-      </div>
+      </section>
     );
   }
 }

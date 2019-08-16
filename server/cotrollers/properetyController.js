@@ -9,11 +9,14 @@ module.exports = {
   },
   editListing: async (req, res) => {
     const { id } = req.params;
+    const aid = req.session.agent.id;
     const { city, state, address, zipcode, image, price } = req.body;
+    console.log(req.params, req.body);
     const updateProperty = await req.app
       .get("db")
       .update_listing([city, state, address, zipcode, image, price, id]);
-    return res.sendStatus(200);
+    const agentProperties = await req.app.get("db").get_property(aid);
+    return res.status(200).json(agentProperties);
   },
   deleteListing: async (req, res) => {
     const { id } = req.params;

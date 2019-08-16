@@ -6,7 +6,7 @@ const intialState = {
   address: "",
   zipcode: null,
   image: "",
-  price: "",
+  price: null,
   error: "",
   homes: []
 };
@@ -51,6 +51,7 @@ export function updateProperty(
     price,
     id
   });
+
   return {
     type: UPDATE_PROPERTY,
     payload: data
@@ -89,9 +90,9 @@ export default function(state = intialState, action) {
     case `${ADD_PROPERTY}_REJECTED`:
       return { ...state, error: "add" };
     case `${UPDATE_PROPERTY}_FULFILLED`:
-      return { ...state, error: "" };
+      return { ...state, homes: payload.data, error: "" };
     case `${UPDATE_PROPERTY}_REJECTED`:
-      return { ...state, error: "" };
+      return { ...state, error: "edit" };
     case `${DELETE_PROPERTY}_FULFILLED`:
       return { ...state, homes: payload };
     case `${GET_PROPERTIES}_FULFILLED`:

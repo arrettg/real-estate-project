@@ -9,6 +9,8 @@ import UserMain from "./components/UserMain";
 import AgentMain from "./components/AgentMain";
 import ListingForm from "./components/ListingForm";
 import ContactForm from "./components/ContactForm";
+import Listing from "./components/Listing";
+import Message from "./components/Message";
 
 export default (
   <Switch>
@@ -19,7 +21,9 @@ export default (
     <Route component={AgentRegistration} path="/register/agent" />
     <Route component={AgentMain} path="/main/agent" />
     <Route component={UserMain} path="/main/user" />
+    <Route componet={Listing} path="/listing" />
     <Route component={ListingForm} path="/listingForm" />
     <Route component={ContactForm} path="/contact" />
+    <Route component={Message} path="/message" />
   </Switch>
 );

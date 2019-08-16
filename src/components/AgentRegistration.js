@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import "../styles/register.scss";
 
 import { register, updateAuth } from "../ducks/agentAuthReducer";
 
@@ -22,7 +23,7 @@ class AgentRegistration extends Component {
   };
   render() {
     return (
-      <div>
+      <section>
         {this.props.id ? <Redirect to="/main/agent" /> : null}
         <input
           onChange={this.handleChange}
@@ -104,7 +105,7 @@ class AgentRegistration extends Component {
           placeholder="Password"
         />
         <button onClick={this.handleRegister}>Register</button>
-      </div>
+      </section>
     );
   }
 }

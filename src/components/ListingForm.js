@@ -123,7 +123,7 @@ class ListingForm extends Component {
             type="number"
           />
           <button onClick={this.handleAdd}>Create</button>
-          <button onClick={this.handleEdit}>Update</button>
+
           <h1>Your Listings</h1>
           <Listings />
         </form>
