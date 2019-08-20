@@ -24,6 +24,7 @@ class Listings extends Component {
   };
 
   render() {
+    console.log(this.props);
     let displayListings = this.props.homes.map(property => {
       return (
         <Listing
@@ -34,7 +35,6 @@ class Listings extends Component {
         />
       );
     });
-    console.log(this.props);
     return (
       <div>
         <h1>Listings</h1>

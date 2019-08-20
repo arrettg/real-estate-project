@@ -1,7 +1,8 @@
-const path = require("path");
 require("dotenv").config();
 
 const express = require("express");
+const path = require("path");
+
 const session = require("express-session");
 const massive = require("massive");
 const authCtrl = require("./cotrollers/authController");
@@ -15,8 +16,8 @@ const PORT = 4040;
 const { SESSION_SECRET, CONNECTION_STRING, ZWSID, USER, PASS } = process.env;
 
 const app = express();
-const server = require("http").server;
-const io = require("socket.io")(server);
+// const server = require("http").server;
+// const io = require("socket.io")(server);
 
 app.use(express.static(`${__dirname}/../build`));
 app.use(express.json());
@@ -33,9 +34,6 @@ app.use(
     secret: SESSION_SECRET
   })
 );
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../build/index.html"));
-});
 
 //auth endpoints
 app.post("/auth/register/user", authCtrl.registerUser);
@@ -56,5 +54,9 @@ app.post("/api/properties", propertyCtrl.addNewListing);
 app.put("/api/properties/:id", auth.agentsOnly, propertyCtrl.editListing);
 app.delete("/api/properties/:id", auth.agentsOnly, propertyCtrl.deleteListing);
 app.get("/api/properties", propertyCtrl.getAgentListings);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
+});
 
 app.listen(PORT, () => console.log(`LISTEN on ${PORT}`));
