@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { updateAuth, register } from "../ducks/userAuthReducer";
+import "../styles/register.scss";
 
 class UserRegistration extends Component {
   handleChange = e => {
@@ -20,7 +21,7 @@ class UserRegistration extends Component {
     }
 
     return (
-      <div>
+      <section>
         {this.props.id ? <Redirect to="/main/user" /> : null}
         <input
           onChange={this.handleChange}
@@ -34,7 +35,7 @@ class UserRegistration extends Component {
           placeholder="Password"
         />
         <button onClick={this.handdleRegister}>Submit</button>
-      </div>
+      </section>
     );
   }
 }

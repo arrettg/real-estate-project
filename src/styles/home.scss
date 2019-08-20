@@ -18,6 +18,9 @@ main {
 
     z-index: -1;
   }
+  h1 {
+    display: none;
+  }
 
   button {
     font-family: $myText;
@@ -25,5 +28,19 @@ main {
     width: 220px;
     height: 150px;
     border-radius: 4%;
+  }
+}
+@media (min-width: 900px) {
+  main {
+    flex-direction: row;
+    width: 80vw;
+    align-items: center;
+    img {
+      display: none;
+    }
+    h1 {
+      display: block;
+      font-size: 2em;
+    }
   }
 }

@@ -11,6 +11,7 @@ import ListingForm from "./components/ListingForm";
 import ContactForm from "./components/ContactForm";
 import Listing from "./components/Listing";
 import Message from "./components/Message";
+import messageReducer from "./ducks/messageReducer";
 
 export default (
   <Switch>
@@ -24,6 +25,7 @@ export default (
     <Route componet={Listing} path="/listing" />
     <Route component={ListingForm} path="/listingForm" />
     <Route component={ContactForm} path="/contact" />
+
     <Route component={Message} path="/message" />
   </Switch>
 );

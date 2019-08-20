@@ -10,8 +10,8 @@ const rootReducer = combineReducers({
   userAuth: userAuthReducer,
   agentAuth: agentAuthReducer,
   property: propertyReducer,
-  agent: agentReducer,
-  message: messageReducer
+  agent: agentReducer
+  // message: messageReducer
 });
 
 export default createStore(rootReducer, applyMiddleware(promiseMiddleware));

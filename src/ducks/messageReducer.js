@@ -1,33 +1,63 @@
-import React from "react";
-const reducerHook = React.useReducer(reducer, initState);
-export const CTX = React.createContext();
+// import React, { createContext, useReducer } from "react";
+// import io from "socket.io-client";
+// export const ctx = createContext();
 
-const initState = {
-  genral: [
-    { from: "bob", msg: "hello" },
-    { from: "bab", msg: "hello" },
-    { from: "bo", msg: "hello" }
-  ],
-  topic2: [
-    { from: "bob", msg: "hello" },
-    { from: "bab", msg: "hello" },
-    { from: "bo", msg: "hello" }
-  ]
-};
+// /**
+//   initState = {
+//     topic1: [
+//       {form: "", msg: "hi"}
+//     ]
+//   }
+//  */
 
-export function reducer(state, action) {
-  const { from, msg, topic } = action.payload;
-  switch (action.type) {
-    case "RECIEVE_MESSAGE":
-      return {
-        ...state,
-        [topic]: [...state[topic], { from, msg }]
-      };
-    default:
-      return state;
-  }
-}
+// export const RECEIVE_MESSAGE = "RECEIVE_MESSAGE";
+// const initialState = {
+//   topic1: [
+//     { from: "use1", msg: "hi" },
+//     { from: "use2", msg: "hello" },
+//     { from: "use3", msg: "I’d like you to…" }
+//   ],
+//   topic2: [
+//     { from: "use5", msg: "Are you sure…?" },
+//     { from: "use2", msg: "I cannot wait to…" },
+//     { from: "use3", msg: "I dare say…" }
+//   ]
+// };
+// const reducer = (state, action) => {
+//   const { from, msg, topic } = action.payload;
+//   switch (action.type) {
+//     case RECEIVE_MESSAGE:
+//       return {
+//         ...state,
+//         [topic]: [...state[topic], { from, msg }]
+//       };
+//     default:
+//       return state;
+//   }
+// };
 
-export default function messageReducer(props) {
-  return <CTX.Provider value={reducerHook}>{props.children}</CTX.Provider>;
-}
+// let socket;
+// const user = "user" + Math.random().toFixed(2) * 100;
+
+// function sendMessageAction(value) {
+//   socket.emit("chat message", value);
+// }
+
+// const messageReducer = props => {
+//   const [allCharts, dispatch] = useReducer(reducer, initialState);
+
+//   if (!socket) {
+//     socket = io(":3001");
+//     socket.on("chat message", function(msg) {
+//       dispatch({ type: RECEIVE_MESSAGE, payload: msg });
+//     });
+//   }
+
+//   return (
+//     <ctx.Provider value={{ allCharts, sendMessageAction, user }}>
+//       {props.children}
+//     </ctx.Provider>
+//   );
+// };
+
+// export default messageReducer;

@@ -1,4 +1,4 @@
-@import "vars.scss";
+@import "vars";
 
 section {
   display: flex;
@@ -6,6 +6,10 @@ section {
   height: 80vh;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  border: 1px solid red;
+  justify-content: space-around;
+}
+@media (min-width: 900px) {
+  button {
+    width: 80px;
+  }
 }
